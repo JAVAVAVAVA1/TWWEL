@@ -17,9 +17,9 @@ public class StoreRepository {
     public StoreRepository() {
         if (!file.exists()) {
             ArrayList<Store> defaultStores = new ArrayList<>();
-            defaultStores.add(new Store("포마토", "떡라면", "횡단보도 건넌 바로 앞", 6000, 6, ClosedDays.TUE, MenuTag.SNACK, OPEN));
-            defaultStores.add(new Store("이삭토스트", "햄치즈토스트", "시장 초입", 7000, 4, ClosedDays.SUN, MenuTag.SANDWICH, OPEN));
-            defaultStores.add(new Store("버거리", "프레쉬버거", "3번 출구 앞", 8400, 8, ClosedDays.SUN, MenuTag.BURGER, OPEN));
+            defaultStores.add(new Store("포마토", "떡라면", "횡단보도 건넌 바로 앞", 6000, 6, ClosedDays.TUE, MenuTag.SNACK, StoreStatus.OPEN));
+            defaultStores.add(new Store("이삭토스트", "햄치즈토스트", "시장 초입", 7000, 4, ClosedDays.SUN, MenuTag.SANDWICH, StoreStatus.OPEN));
+            defaultStores.add(new Store("버거리", "프레쉬버거", "3번 출구 앞", 8400, 8, ClosedDays.SUN, MenuTag.BURGER, StoreStatus.OPEN));
 
             saveStores(defaultStores);
         }
