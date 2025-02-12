@@ -87,6 +87,16 @@ public class StoreRepository {
         return returnStoreList;
     }
 
+    public Store selectStoreByName(String name) {
+        Store returnStore = null;
+        for (Store store : storeList) {
+            if (store.getStoreName().equals(name)) {
+                returnStore = store;
+            }
+        }
+        return returnStore;
+    }
+
     public int insertStoreInfo(Store store) {
         MyObjectOutput moo = null;
 
