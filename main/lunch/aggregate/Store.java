@@ -80,4 +80,16 @@ public class Store implements Serializable {
         this.menuTag = menuTag;
     }
 
+    @Override
+    public String toString() {
+        return "Store{" +
+                "storeName='" + storeName + '\'' +
+                ", storeMenu='" + storeMenu + '\'' +
+                ", storeLocation='" + storeLocation + '\'' +
+                ", menuPrice=" + menuPrice +
+                ", maxPeople=" + maxPeople +
+                ", closedDays=" + closedDays +
+                ", menuTag=" + menuTag +
+                '}';
+    }
 }

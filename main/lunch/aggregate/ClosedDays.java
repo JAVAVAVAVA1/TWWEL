@@ -1,5 +1,5 @@
 package main.lunch.aggregate;
 
 public enum ClosedDays {
-    SUN, MON, TWO, WED, THR, FRI, SAT;
+    SUN, MON, TUE, WED, THR, FRI, SAT;
 }
