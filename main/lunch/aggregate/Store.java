@@ -10,11 +10,12 @@ public class Store implements Serializable {
     private int maxPeople;              //최대 수용 인원
     private ClosedDays closedDays;      //휴무일
     private MenuTag menuTag;            //메뉴 태그 타입
+    private StoreStatus storeStatus;    //가게 정보 삭제 유무
 
     public Store() {
     }
 
-    public Store(String storeName, String storeMenu, String storeLocation, int menuPrice, int maxPeople, ClosedDays closedDays, MenuTag menuTag) {
+    public Store(String storeName, String storeMenu, String storeLocation, int menuPrice, int maxPeople, ClosedDays closedDays, MenuTag menuTag, StoreStatus storeStatus) {
         this.storeName = storeName;
         this.storeMenu = storeMenu;
         this.storeLocation = storeLocation;
@@ -22,6 +23,7 @@ public class Store implements Serializable {
         this.maxPeople = maxPeople;
         this.closedDays = closedDays;
         this.menuTag = menuTag;
+        this.storeStatus = storeStatus;
     }
 
     public String getStoreName() {
@@ -52,6 +54,10 @@ public class Store implements Serializable {
         return menuTag;
     }
 
+    public StoreStatus getStoreStatus() {
+        return storeStatus;
+    }
+
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
@@ -80,6 +86,10 @@ public class Store implements Serializable {
         this.menuTag = menuTag;
     }
 
+    public void setStoreStatus(StoreStatus storeStatus) {
+        this.storeStatus = storeStatus;
+    }
+
     @Override
     public String toString() {
         return "Store{" +
@@ -91,5 +101,15 @@ public class Store implements Serializable {
                 ", closedDays=" + closedDays +
                 ", menuTag=" + menuTag +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
