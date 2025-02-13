@@ -18,9 +18,23 @@ public class StoreRepository {
     public StoreRepository() {
         if (!file.exists()) {
             ArrayList<Store> defaultStores = new ArrayList<>();
-            defaultStores.add(new Store("포마토", new HashMap<>(){{put("떡라면",4500); put("라볶이",5500);}}, "횡단보도 건넌 바로 앞", 6, new HashSet<>(){{add(ClosedDays.TUE);}}, MenuTag.SNACK, StoreStatus.OPEN));
-            defaultStores.add(new Store("이삭토스트", new HashMap<>(){{put("햄치즈스페셜",6000); put("햄치즈",5000);}}, "시장 초입", 4, new HashSet<>(){{add(ClosedDays.SUN);}}, MenuTag.SANDWICH, StoreStatus.OPEN));
-            defaultStores.add(new Store("버거리", new HashMap<>(){{put("프레쉬버거",8400);}}, "3번 출구 앞", 8, new HashSet<>(){{add(ClosedDays.SUN);}}, MenuTag.BURGER, StoreStatus.OPEN));
+            HashMap<String, Integer> defaultCatalog = new HashMap<>();
+            defaultCatalog.put("떡라면",4500);
+            defaultCatalog.put("라볶이",5500);
+            HashSet<ClosedDays> defaultClosedDays = new HashSet<>();
+            defaultClosedDays.add(ClosedDays.TUE);
+            defaultStores.add(new Store("포마토", defaultCatalog, "횡단보도 건넌 바로 앞", 6, defaultClosedDays, MenuTag.SNACK, StoreStatus.OPEN));
+            defaultCatalog.clear();
+            defaultCatalog.put("햄치즈스페셜",6000);
+            defaultCatalog.put("햄치즈",5000);
+            defaultClosedDays.clear();
+            defaultClosedDays.add(ClosedDays.SUN);
+            defaultStores.add(new Store("이삭토스트", defaultCatalog, "시장 초입", 4, defaultClosedDays, MenuTag.SANDWICH, StoreStatus.OPEN));
+            defaultCatalog.clear();
+            defaultCatalog.put("프레쉬버거",8400);
+            defaultClosedDays.clear();
+            defaultClosedDays.add(ClosedDays.SUN);
+            defaultStores.add(new Store("버거리", defaultCatalog, "3번 출구 앞", 8, defaultClosedDays, MenuTag.BURGER, StoreStatus.OPEN));
 
             saveStores(defaultStores);
         }
