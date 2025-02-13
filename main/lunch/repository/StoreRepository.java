@@ -8,18 +8,19 @@ import main.lunch.stream.MyObjectOutput;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class StoreRepository {
     private final ArrayList<Store> storeList = new ArrayList<>();
-    private final File file = new File(
-            "main/lunch/db/storeDB.dat");
+    private final File file = new File("main/lunch/db/storeDB.dat");
 
     public StoreRepository() {
         if (!file.exists()) {
             ArrayList<Store> defaultStores = new ArrayList<>();
-            defaultStores.add(new Store("포마토", "떡라면", "횡단보도 건넌 바로 앞", 6000, 6, ClosedDays.TUE, MenuTag.SNACK, StoreStatus.OPEN));
-            defaultStores.add(new Store("이삭토스트", "햄치즈토스트", "시장 초입", 7000, 4, ClosedDays.SUN, MenuTag.SANDWICH, StoreStatus.OPEN));
-            defaultStores.add(new Store("버거리", "프레쉬버거", "3번 출구 앞", 8400, 8, ClosedDays.SUN, MenuTag.BURGER, StoreStatus.OPEN));
+            defaultStores.add(new Store("포마토", new HashMap<>(){{put("떡라면",4500); put("라볶이",5500);}}, "횡단보도 건넌 바로 앞", 6, new HashSet<>(){{add(ClosedDays.TUE);}}, MenuTag.SNACK, StoreStatus.OPEN));
+            defaultStores.add(new Store("이삭토스트", new HashMap<>(){{put("햄치즈스페셜",6000); put("햄치즈",5000);}}, "시장 초입", 4, new HashSet<>(){{add(ClosedDays.SUN);}}, MenuTag.SANDWICH, StoreStatus.OPEN));
+            defaultStores.add(new Store("버거리", new HashMap<>(){{put("프레쉬버거",8400);}}, "3번 출구 앞", 8, new HashSet<>(){{add(ClosedDays.SUN);}}, MenuTag.BURGER, StoreStatus.OPEN));
 
             saveStores(defaultStores);
         }
