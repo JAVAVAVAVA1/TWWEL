@@ -42,9 +42,8 @@ public class StoreService {
         if (selectedStore != null) {
             Store instanceStore = new Store();
             instanceStore.setStoreName(selectedStore.getStoreName());
-            instanceStore.setStoreMenu(selectedStore.getStoreMenu());
+            instanceStore.setMenuCatalogMap(selectedStore.getMenuCatalogMap());
             instanceStore.setStoreLocation(selectedStore.getStoreLocation());
-            instanceStore.setMenuPrice(selectedStore.getMenuPrice());
             instanceStore.setMaxPeople(selectedStore.getMaxPeople());
 
             instanceStore.setClosedDays(selectedStore.getClosedDays()); // 배열로 변경 예정
