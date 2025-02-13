@@ -26,18 +26,18 @@ public class Application {
             System.out.println("5. 점심 메뉴 추천");
             System.out.println("6. 프로그램 종료");
             System.out.println("메뉴를 선택해 주세요: ");
-            String input = br.readLine();
+            int input = Integer.parseInt(br.readLine());
 
             switch (input) {
                 case 1:
-                    ss.insertStoreInfo();
+                    ss.registerStore(uploadStoreInfo());
                     break;
                 case 2:
                     Store selected = ss.findStoreForMod(chooseStoreName()); // selected 포마토 -> 포마토 관련 필드값.
                     if (selected == null) {
                         continue;
                     }
-                    ss.modifyStoreInfo(reform(selected));
+                    ss.modifyStore(reform(selected));
                     break;
                 case 3:
                     ss.removeStore(chooseStoreName());
@@ -71,20 +71,16 @@ public class Application {
 
 
         Map<String, Integer> menuCatalogMap = new HashMap<>();
-        do {
+        while(true) {
             System.out.println("등록할 가게의 메뉴와 메뉴 가격을 입력하시오(메뉴명 가격 형태로): ");
             st = new StringTokenizer(br.readLine());
             menuCatalogMap.put(st.nextToken(), Integer.parseInt(st.nextToken()));
-        } while {
+
             System.out.println("메뉴를 더 등록하시려면 Y를 입력해주세요.: ");
             st = new StringTokenizer(br.readLine());
             String addMore = st.nextToken().toUpperCase();
 
-            if (addMore.equals("Y")) {
-                System.out.println("등록할 가게의 메뉴와 메뉴 가격을 입력하시오(메뉴명 가격 형태로): ");
-                st = new StringTokenizer(br.readLine());
-                menuCatalogMap.put(st.nextToken(), Integer.parseInt(st.nextToken()));
-            } else {
+            if (!addMore.equals("Y")) {
                 System.out.println("다음으로 넘어갑니다.");
                 break;
             }
@@ -133,9 +129,7 @@ public class Application {
             default -> null;
         };
 
-
-        StoreStatus storeStatus = new storeStatus();
-        store = new Store(storeName, storeMenu, storeLocation, menuPrice, maxPeople, closedDays, menuTag, StoreStatus.OPEN);
+        store = new Store(storeName, menuCatalogMap, storeLocation, maxPeople, closedDays, mt, StoreStatus.OPEN);
 
         return store;
     }
@@ -188,7 +182,7 @@ public class Application {
                     break;
                 case 5:
                     System.out.println("수정할 휴무일을 입력하시오(요일 요일.... (영어로) 기본의 요일은 초기화됩니다.): ");
-                    Set<String> tempClosedDays = new HashSet<>();
+                    Set<ClosedDays> tempClosedDays = new HashSet<>();
                     st = new StringTokenizer(br.readLine());
                     while(st.hasMoreTokens()) {
                         String days = st.nextToken();
