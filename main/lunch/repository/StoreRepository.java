@@ -31,7 +31,8 @@ public class StoreRepository {
             List<Store> defaultStores = new ArrayList<>();
             insertDefaultStores((ArrayList<Store>) defaultStores);
             saveStores((ArrayList<Store>) defaultStores);
-
+        }
+        if (!historyFile.exists()) {
             List<History> defaultHistory = new LinkedList<>();
             insertDefaultHistory((LinkedList<History>) defaultHistory);
             saveHistory((LinkedList<History>) defaultHistory);
@@ -192,6 +193,16 @@ public class StoreRepository {
             }
         }
         return returnStore;
+    }
+
+    public ArrayList<Store> selectStoreByMaxPeople(int people) {
+        ArrayList<Store> returnStoreList = new ArrayList<>();
+        for (Store store : storeList) {
+            if (store.getMaxPeople() >= people && store.getStoreStatus() != StoreStatus.CLOSED) {
+                returnStoreList.add(store);
+            }
+        }
+        return returnStoreList;
     }
 
     public int insertStoreInfo(Store store) {
