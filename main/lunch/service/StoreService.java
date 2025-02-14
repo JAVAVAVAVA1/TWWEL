@@ -81,13 +81,17 @@ public class StoreService {
 
     public void getRecommendationByStore() {
         List<Store> recommendationByStore = sr.selectAllStores();
-        int randomSize = (int)Math.random() * recommendationByStore.size() + 1;
+        int randomSize = (int) (Math.random() * recommendationByStore.size());
         System.out.println(recommendationByStore.get(randomSize - 1));
     }
 
     public void getRecommendationByMenuTag(MenuTag menuTag) {
-        List<Store> recommendationByMenTag =  sr.selectStoreByMenuTag(menuTag);
-        int randomSize = (int)Math.random() * recommendationByMenTag.size() + 1;
-        System.out.println(recommendationByMenTag.get(randomSize - 1));
+        List<Store> recommendationByMenuTag =  sr.selectStoreByMenuTag(menuTag);
+        int randomSize = (int) (Math.random() * recommendationByMenuTag.size());
+        try {
+            System.out.println("점메추: " + recommendationByMenuTag.get(randomSize));
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("해당하는 메뉴 태그로 등록된 가게가 없습니다.");
+        }
     }
 }
