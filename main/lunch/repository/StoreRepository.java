@@ -93,13 +93,19 @@ public class StoreRepository {
     }
 
     public ArrayList<Store> selectAllStores() {
-        return this.storeList;
+        ArrayList<Store> returnStoreList = new ArrayList<>();
+        for (Store store : storeList) {
+            if (store.getStoreStatus() != StoreStatus.CLOSED) {
+                returnStoreList.add(store);
+            }
+        }
+        return returnStoreList;
     }
 
     public ArrayList<Store> selectStoreByMenuTag(MenuTag menuTag) {
         ArrayList<Store> returnStoreList = new ArrayList<>();
         for (Store store : storeList) {
-            if (store.getMenuTag().equals(menuTag)) {
+            if (store.getMenuTag().equals(menuTag) && store.getStoreStatus() != StoreStatus.CLOSED) {
                 returnStoreList.add(store);
             }
         }
