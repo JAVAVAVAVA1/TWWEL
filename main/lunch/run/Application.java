@@ -9,6 +9,7 @@ import main.lunch.service.StoreService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Application {
@@ -257,6 +258,7 @@ public class Application {
             System.out.println("===== 점심 메뉴 추천 기준을 정해주세요. =====");
             System.out.println("1. 전체 메뉴중 추천 ");
             System.out.println("2. 메뉴 태그중 추천 ");
+            System.out.println("3. 인원 수를 통한 추천");
             inputNum = Integer.parseInt(br.readLine());
 
             if(inputNum == 1) {
@@ -293,6 +295,12 @@ public class Application {
                 }
                 ss.getRecommendationByMenuTag(recommendMenuTag);
                 break;
+            }
+
+            if(inputNum == 3) {
+                System.out.println("현재 식사할 인원 수를 입력해 주세요: ");
+                int inputPeople = Integer.parseInt(br.readLine());
+                ss.getRecommendationByMaxPeople(inputPeople);
             }
 
         }

@@ -94,4 +94,15 @@ public class StoreService {
             System.out.println("해당하는 메뉴 태그로 등록된 가게가 없습니다.");
         }
     }
+
+    public void getRecommendationByMaxPeople(int people) {
+        List<Store> recommendationByMaxPeople = sr.selectStoreByMaxPeople(people);
+        int randomSize = (int) (Math.random() * recommendationByMaxPeople.size());
+        try {
+            System.out.println("점메추: " + recommendationByMaxPeople.get(randomSize));
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("해당 인원을 수용할 수 있는 가게가 없습니다. ");
+        }
+
+    }
 }
