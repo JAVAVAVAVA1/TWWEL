@@ -143,7 +143,7 @@ public class StoreRepository {
 
     public int updateStoreInfo(Store reformedStore) {
         for (int i = 0; i < storeList.size(); i++) {
-            if (storeList.get(i).getStoreName().equals(reformedStore.getStoreName())) {
+            if (storeList.get(i).getStoreIdx() == reformedStore.getStoreIdx()) {
                 storeList.set(i, reformedStore);
                 saveStores(storeList);
 
@@ -164,5 +164,10 @@ public class StoreRepository {
             }
         }
         return result;
+    }
+
+    public int selectLastStoreIdx() {
+        Store lastStore = storeList.get(storeList.size() - 1);
+        return lastStore.getStoreIdx();
     }
 }

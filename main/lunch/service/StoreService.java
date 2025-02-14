@@ -28,6 +28,8 @@ public class StoreService {
     }
 
     public void registerStore(Store store) {
+        int lastStoreIdx = sr.selectLastStoreIdx();
+        store.setStoreIdx(lastStoreIdx + 1);
         int result = sr.insertStoreInfo(store);
         if (result == 1) {
             System.out.println(store.getStoreName() + "의 등록이 완료되었습니다.");
