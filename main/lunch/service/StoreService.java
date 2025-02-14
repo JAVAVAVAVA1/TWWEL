@@ -1,12 +1,11 @@
 package main.lunch.service;
 
-import main.lunch.aggregate.ClosedDays;
 import main.lunch.aggregate.MenuTag;
 import main.lunch.aggregate.Store;
-import main.lunch.aggregate.StoreStatus;
 import main.lunch.repository.StoreRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StoreService {
     private final StoreRepository sr = new StoreRepository();
@@ -78,5 +77,17 @@ public class StoreService {
         } else {
             System.out.println("가게 삭제 실패");
         }
+    }
+
+    public void getRecommendationByStore() {
+        List<Store> recommendationByStore = sr.selectAllStores();
+        int randomSize = (int)Math.random() * recommendationByStore.size() + 1;
+        System.out.println(recommendationByStore.get(randomSize - 1));
+    }
+
+    public void getRecommendationByMenuTag(MenuTag menuTag) {
+        List<Store> recommendationByMenTag =  sr.selectStoreByMenuTag(menuTag);
+        int randomSize = (int)Math.random() * recommendationByMenTag.size() + 1;
+        System.out.println(recommendationByMenTag.get(randomSize - 1));
     }
 }

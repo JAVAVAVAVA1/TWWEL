@@ -46,6 +46,7 @@ public class Application {
                     ss.findAllStores();
                     break;
                 case 5:
+                    recommendMenu();
                     System.out.println("점메추 ");
                     break;
                 case 6:
@@ -247,6 +248,52 @@ public class Application {
         return mt;
     }
 
+    private static void recommendMenu() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int inputNum = 0;
+        String inputMenuTag = "";
+        while (true) {
+            System.out.println("===== 점심 메뉴 추천 기준을 정해주세요. =====");
+            System.out.println("1. 전체 메뉴중 추천 ");
+            System.out.println("2. 메뉴 태그중 추천 ");
+            inputNum = Integer.parseInt(br.readLine());
 
+            if(inputNum == 1) {
+                ss.getRecommendationByStore();
+                break;
+            }
 
+            if(inputNum == 2) {
+                System.out.println("메뉴 태그를 선택해 주세요");
+                inputMenuTag = br.readLine();
+                MenuTag recommendMenuTag = null;
+                switch (inputMenuTag) {
+                    case "BURGER":
+                        recommendMenuTag = MenuTag.BURGER;
+                        break;
+                    case "SANDWICH":
+                        recommendMenuTag = MenuTag.SANDWICH;
+                        break;
+                    case "VIETNAM":
+                        recommendMenuTag = MenuTag.VIETNAM;
+                        break;
+                    case "CHINA":
+                        recommendMenuTag = MenuTag.CHINA;
+                        break;
+                    case "KOREA":
+                        recommendMenuTag = MenuTag.KOREA;
+                        break;
+                    case "PIZZA":
+                        recommendMenuTag = MenuTag.PIZZA;
+                        break;
+                    case "SNACK":
+                        recommendMenuTag = MenuTag.SNACK;
+                        break;
+                }
+                ss.getRecommendationByMenuTag(recommendMenuTag);
+                break;
+            }
+
+        }
+    }
 }

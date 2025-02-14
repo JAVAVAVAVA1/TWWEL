@@ -170,4 +170,5 @@ public class StoreRepository {
         Store lastStore = storeList.get(storeList.size() - 1);
         return lastStore.getStoreIdx();
     }
+
 }
