@@ -47,7 +47,6 @@ public class Application {
                     break;
                 case 5:
                     recommendMenu();
-                    System.out.println("점메추 ");
                     break;
                 case 6:
                     System.out.println("이용해주셔서 감사합니다.");
