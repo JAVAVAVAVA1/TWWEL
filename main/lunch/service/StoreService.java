@@ -82,7 +82,7 @@ public class StoreService {
     public void getRecommendationByStore() {
         List<Store> recommendationByStore = sr.selectAllStores();
         int randomSize = (int) (Math.random() * recommendationByStore.size());
-        System.out.println(recommendationByStore.get(randomSize - 1));
+        System.out.println(recommendationByStore.get(randomSize));
     }
 
     public void getRecommendationByMenuTag(MenuTag menuTag) {

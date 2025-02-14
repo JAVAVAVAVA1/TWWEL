@@ -74,11 +74,13 @@ public class Application {
         while(true) {
             System.out.println("등록할 가게의 메뉴와 메뉴 가격을 입력하시오(메뉴명 가격 형태로): ");
             st = new StringTokenizer(br.readLine());
-            menuCatalogMap.put(st.nextToken(), Integer.parseInt(st.nextToken()));
+            while(st.hasMoreTokens()) {
+                menuCatalogMap.put(st.nextToken(), Integer.parseInt(st.nextToken()));
+            }
 
-            System.out.println("메뉴를 더 등록하시려면 Y를 입력해주세요.: ");
+            System.out.println("메뉴를 더 등록하시려면 Y, 아닌 경우 아무 키를 입력해주세요.: ");
             st = new StringTokenizer(br.readLine());
-            String addMore = st.nextToken().toUpperCase();
+            String addMore = br.readLine().toUpperCase();
 
             if (!addMore.equals("Y")) {
                 System.out.println("다음으로 넘어갑니다.");
@@ -100,7 +102,7 @@ public class Application {
         st = new StringTokenizer(br.readLine());
 
         while(st.hasMoreTokens()) {
-            String days = st.nextToken();
+            String days = st.nextToken().toUpperCase();
             switch(days) {
                 case "SUN" -> closedDays.add(ClosedDays.SUN);
                 case "MON" -> closedDays.add(ClosedDays.MON);
@@ -185,7 +187,7 @@ public class Application {
                     Set<ClosedDays> tempClosedDays = new HashSet<>();
                     st = new StringTokenizer(br.readLine());
                     while(st.hasMoreTokens()) {
-                        String days = st.nextToken();
+                        String days = st.nextToken().toUpperCase();
                         switch(days) {
                             case "SUN" -> tempClosedDays.add(ClosedDays.SUN);
                             case "MON" -> tempClosedDays.add(ClosedDays.MON);
