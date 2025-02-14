@@ -129,7 +129,7 @@ public class Application {
             default -> null;
         };
 
-        store = new Store(storeName, menuCatalogMap, storeLocation, maxPeople, closedDays, mt, StoreStatus.OPEN);
+        store = new Store(storeName, menuCatalogMap, storeLocation, maxPeople, closedDays, mt, StoreStatus.OPEN, 4);
 
         return store;
     }

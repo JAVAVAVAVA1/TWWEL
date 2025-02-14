@@ -12,11 +12,12 @@ public class Store implements Serializable {
     private Set<ClosedDays> closedDays;      //휴무일
     private MenuTag menuTag;            //메뉴 태그 타입
     private StoreStatus storeStatus;    //가게 정보 삭제 유무
+    private int storeIdx;               //가게 이름 수정용 인덱스
 
     public Store() {
     }
 
-    public Store(String storeName, Map<String, Integer> menuCatalogMap, String storeLocation,  int maxPeople, Set<ClosedDays> closedDays, MenuTag menuTag, StoreStatus storeStatus) {
+    public Store(String storeName, Map<String, Integer> menuCatalogMap, String storeLocation,  int maxPeople, Set<ClosedDays> closedDays, MenuTag menuTag, StoreStatus storeStatus, int storeIdx) {
         this.storeName = storeName;
         this.menuCatalogMap = menuCatalogMap;
         this.storeLocation = storeLocation;
@@ -24,6 +25,15 @@ public class Store implements Serializable {
         this.closedDays = closedDays;
         this.menuTag = menuTag;
         this.storeStatus = storeStatus;
+        this.storeIdx = storeIdx;
+    }
+
+    public int getStoreIdx() {
+        return storeIdx;
+    }
+
+    public void setStoreIdx(int storeIdx) {
+        this.storeIdx = storeIdx;
     }
 
     public void setStoreName(String storeName) {
